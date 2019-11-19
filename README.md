@@ -1,4 +1,4 @@
-# myDestiller Parser
+# myDistiller Parser
 
 ## Usage
 
