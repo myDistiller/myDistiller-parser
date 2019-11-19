@@ -1,0 +1,23 @@
+{
+  "name": "mydistiller-parser",
+  "version": "1.0.0",
+  "description": "A parser for myDistiller",
+  "main": "index.js",
+  "repository": "https://github.com/myDistiller/myDistiller-parser.git",
+  "contributors": [
+    "Tim Carl Frank",
+    "Max Henkel",
+    "Christian Zaenker"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^2.0.0",
+    "regexp-tree": "^0.1.14"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
