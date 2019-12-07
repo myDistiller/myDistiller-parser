@@ -20,7 +20,7 @@ function applyTree(tree, text) {
     for (let name of Object.keys(tree)) {
         let entry = tree[name]
 
-        let regex = new RegExp(entry.regex, 'g')
+        let regex = new RegExp(entry.regex, 'gu')
         let matches = text.match(regex)
         if (!matches) {
             matches = []
@@ -40,7 +40,7 @@ function applyTree(tree, text) {
 
 function getEntry(tree, text, parentRegex) {
     let ret = {}
-    let regex = new RegExp(parentRegex, 'g')
+    let regex = new RegExp(parentRegex, 'gu')
     for (let name of Object.keys(tree)) {
         let element = tree[name]
         let match, matches = []
@@ -69,7 +69,7 @@ function getEntry(tree, text, parentRegex) {
 }
 
 function apply(regex, text) {
-    let tree = regexpTree.parse(new RegExp(regex))
+    let tree = regexpTree.parse(new RegExp(regex, 'gu'))
     let regexes = parse(tree.body)
     return applyTree(regexes, text)
 }
