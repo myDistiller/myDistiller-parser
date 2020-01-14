@@ -1,7 +1,6 @@
 // @ts-check
 const { CompileError } = require('./error.js')
 const { parse } = require('./parser.js')
-const escapeStringRegexp = require('escape-string-regexp')
 
 function compileAll(data) {
     let tree = data
@@ -59,7 +58,7 @@ function processExpression(expression, variable, tree, scope, counter, regex = '
     }
 
     if (expression.type === 'string') {
-        regex = `${regex}${escapeStringRegexp(expression.value)}`
+        regex = `${regex}(?:${escapeRegExp(expression.value)})`
     } else if (expression.type === 'regex') {
         try {
             new RegExp(expression.value)
@@ -93,6 +92,13 @@ function processExpression(expression, variable, tree, scope, counter, regex = '
         regex = `${regex}(?:${processExpression(expression.value, variable, tree, scope, counter)}){0,1}`
     }
     return regex
+}
+
+const reRegExpChar = /[\\^$.*+?()[\]{}|]/g
+const reHasRegExpChar = RegExp(reRegExpChar.source)
+
+function escapeRegExp(string) {
+  return (string && reHasRegExpChar.test(string)) ? string.replace(reRegExpChar, '\\$&') : (string || '')
 }
 
 module.exports = { compile, compileAll }

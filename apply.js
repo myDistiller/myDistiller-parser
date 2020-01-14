@@ -45,8 +45,8 @@ function getEntry(tree, text, parentRegex) {
         let element = tree[name]
         let match, matches = []
         while ((match = regex.exec(text)) !== null) {
-            for(let group of Object.keys(match.groups)){
-                if(group.split('_')[0]===name){
+            for (let group of Object.keys(match.groups)) {
+                if (group.split('_')[0] === name) {
                     matches.push(match.groups[group])
                 }
             }
@@ -59,9 +59,9 @@ function getEntry(tree, text, parentRegex) {
             }
         } else {
             if (matches.length > 1) {
-                ret[name] = matches
+                ret[name] = matches.map(str => str.trim())
             } else {
-                ret[name] = matches[0]
+                ret[name] = matches[0].trim()
             }
         }
     }
