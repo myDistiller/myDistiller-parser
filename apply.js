@@ -59,9 +59,9 @@ function getEntry(tree, text, parentRegex) {
             }
         } else {
             if (matches.length > 1) {
-                ret[name] = matches.map(str => str.trim())
+                ret[name] = matches.map(str => str !== undefined ? str.trim() : undefined)
             } else {
-                ret[name] = matches[0].trim()
+                ret[name] = matches[0] !== undefined ? matches[0].trim() : undefined
             }
         }
     }
