@@ -30,9 +30,9 @@ function applyTree(tree, text) {
             for (let match of matches) {
                 ret.push(getEntry(entry.data, match, entry.regex))
             }
-            result[name] = ret
+            result[name] = ret.map(str => str.trim())
         } else {
-            result[name] = matches
+            result[name] = matches.map(str => str.trim())
         }
     }
     return result
@@ -51,6 +51,7 @@ function getEntry(tree, text, parentRegex) {
                 }
             }
         }
+
         if (element.data && Object.keys(element.data).length > 0) {
             if (matches.length > 1) {
                 ret[name] = matches.map(e => getEntry(element.data, e, element.regex))
@@ -59,9 +60,9 @@ function getEntry(tree, text, parentRegex) {
             }
         } else {
             if (matches.length > 1) {
-                ret[name] = matches.map(str => str !== undefined ? str.trim() : undefined)
+                ret[name] = matches
             } else {
-                ret[name] = matches[0] !== undefined ? matches[0].trim() : undefined
+                ret[name] = matches[0]
             }
         }
     }
