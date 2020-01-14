@@ -30,7 +30,7 @@ function applyTree(tree, text) {
             for (let match of matches) {
                 ret.push(getEntry(entry.data, match, entry.regex))
             }
-            result[name] = ret.map(str => str.trim())
+            result[name] = ret;
         } else {
             result[name] = matches.map(str => str.trim())
         }
