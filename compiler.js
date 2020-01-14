@@ -59,7 +59,7 @@ function processExpression(expression, variable, tree, scope, counter, regex = '
     }
 
     if (expression.type === 'string') {
-        regex = `${regex}(?i:${escapeStringRegexp(expression.value)})`
+        regex = `${regex}${escapeStringRegexp(expression.value)}`
     } else if (expression.type === 'regex') {
         try {
             new RegExp(expression.value)
