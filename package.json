@@ -14,9 +14,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "regexp-tree": "^0.1.14"
+    "regexp-tree": "^0.1.21"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "jest": "^26.4.2"
   }
 }
